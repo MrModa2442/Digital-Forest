@@ -6,6 +6,7 @@ export enum AppState {
   TIMING = 'TIMING',
   COMPLETED = 'COMPLETED',
   FOREST = 'FOREST',
+  PROFILE = 'PROFILE',
 }
 
 export interface Tree {
@@ -19,4 +20,23 @@ export interface PlantedTree {
   id: string;
   treeId: string;
   datePlanted: number;
+  withered: boolean;
+  tag?: string;
+}
+
+export interface UserStats {
+    coins: number;
+    plantedForest: PlantedTree[];
+    unlockedTrees: string[];
+    totalFocusTime: number; // in seconds
+    currentStreak: number;
+}
+
+export interface Achievement {
+  id: string;
+  nameKey: string;
+  descriptionKey: string;
+  goalLabelKey: string;
+  badge: string; // SVG string
+  condition: (stats: UserStats, sessionDuration?: number) => boolean;
 }

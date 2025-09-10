@@ -31,6 +31,12 @@ export const translations = {
     slider_label: 'Slider',
     sign_out_button: 'Sign Out',
     toggle_theme: 'Toggle theme',
+    select_tag_label: 'Select a Tag',
+    tag_work: 'Work',
+    tag_study: 'Study',
+    tag_creative: 'Creative',
+    tag_other: 'Other',
+    my_profile_button: 'My Profile',
 
     // Timer
     give_up_button: 'Give Up',
@@ -49,6 +55,9 @@ export const translations = {
     coins_earned_other: 'You earned {{count}} coins!',
     focus_again_button: 'Focus Again',
     view_forest_label: 'View My Forest',
+    streak_message: 'You\'re on a {{count}}-day streak! 🔥',
+    bonus_coins_message: '+{{count}} bonus coins',
+    achievement_unlocked: 'Achievement Unlocked!',
 
     // Forest
     my_forest: 'My Forest',
@@ -56,6 +65,7 @@ export const translations = {
     forest_empty_header: 'Your forest is empty.',
     forest_empty_message: 'Start a focus session to plant your first tree.',
     planted_on_date: '{{treeName}} planted on {{date}}',
+    planted_on_date_with_tag: '{{treeName}} ({{tag}}) planted on {{date}}',
     tree_alt_text: 'A {{treeName}}, stage {{stage}} of growth.',
 
     // Guide
@@ -69,6 +79,44 @@ export const translations = {
     guide_step_4_title: '4. Unlock New Trees',
     guide_step_4_desc: 'Use your coins to unlock new and exotic trees to diversify your digital ecosystem.',
     guide_close_button: 'Got It!',
+
+    // Profile & Achievements
+    profile_title: 'My Profile',
+    profile_back_button: 'Back',
+    stats_title: 'My Stats',
+    trees_planted: 'Trees Planted',
+    withered_trees: 'Withered Trees',
+    total_focused: 'Total Time Focused',
+    current_streak: 'Current Streak',
+    achievements_title: 'My Achievements',
+    
+    // Achievement Names & Descriptions
+    ach_first_tree_name: 'First Root',
+    ach_first_tree_desc: 'Plant your very first tree.',
+    ach_sapling_grower_name: 'Sapling Grower',
+    ach_sapling_grower_desc: 'Successfully plant 10 trees.',
+    ach_forest_builder_name: 'Forest Builder',
+    ach_forest_builder_desc: 'Successfully plant 50 trees.',
+    ach_focused_hour_name: 'Hour of Power',
+    ach_focused_hour_desc: 'Accumulate 60 minutes of focus time.',
+    ach_marathon_session_name: 'Marathoner',
+    ach_marathon_session_desc: 'Complete a single focus session of 90 minutes or more.',
+    ach_collector_name: 'Collector',
+    ach_collector_desc: 'Unlock 5 different tree species.',
+    ach_arboretum_master_name: 'Arboretum Master',
+    ach_arboretum_master_desc: 'Unlock all available tree species.',
+    ach_week_streak_name: 'Consistent Growth',
+    ach_week_streak_desc: 'Maintain a 7-day focus streak.',
+
+    // Achievement Goal Labels
+    ach_goal_1_tree: '1 Tree',
+    ach_goal_10_trees: '10 Trees',
+    ach_goal_50_trees: '50 Trees',
+    ach_goal_1_hour: '1 Hour Total',
+    ach_goal_90_min_session: '90 Min Session',
+    ach_goal_5_species: '5 Species',
+    ach_goal_all_species: 'All Species',
+    ach_goal_7_day_streak: '7 Day Streak',
 
     // Tree names
     tree_oak: 'Oak',

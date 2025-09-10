@@ -80,15 +80,25 @@ const ForestScreen: React.FC<ForestScreenProps> = ({ plantedForest, onBack }) =>
             {positionedTrees.map((item) => {
               if (!item || !item.treeData) return null;
               const finalStageUrl = item.treeData.growthStages[item.treeData.growthStages.length - 1];
+              const treeName = t(item.treeData.name as 'tree_oak') as string;
+              const date = new Date(item.datePlanted).toLocaleDateString();
+              const tag = item.tag ? t(`tag_${item.tag.toLowerCase()}` as 'tag_work') as string : '';
+
+              const titleText = item.withered
+                ? treeName
+                : (tag 
+                    ? t('planted_on_date_with_tag', { treeName, date, tag }) 
+                    : t('planted_on_date', { treeName, date })
+                  ) as string;
+
               return (
                 <div 
                   key={item.id} 
                   className="absolute w-20 h-20 sm:w-24 sm:h-24 animate-grow-up"
                   style={item.style as React.CSSProperties}
-                  // FIX: Cast the inner `t()` call to `string` because the `options` object for `t()` expects `string | number`, not `string | string[]`.
-                  title={t('planted_on_date', { treeName: t(item.treeData.name as 'tree_oak') as string, date: new Date(item.datePlanted).toLocaleDateString() }) as string}
+                  title={titleText}
                 >
-                    <img src={finalStageUrl} alt={t(item.treeData.name as 'tree_oak') as string} className="max-w-full max-h-full object-contain drop-shadow-md" />
+                    <img src={finalStageUrl} alt={treeName} className={`max-w-full max-h-full object-contain drop-shadow-md ${item.withered ? 'tree-withered' : ''}`} />
                 </div>
               );
             })}

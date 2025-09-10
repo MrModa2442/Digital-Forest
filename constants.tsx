@@ -1,4 +1,4 @@
-import type { Tree } from './types';
+import type { Tree, Achievement } from './types';
 
 // OAK SVGs
 const OAK_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 80" stroke="#7a5548" stroke-width="2" fill="none"/><path d="M50 80 Q 45 75, 48 70 T 50 65" stroke="#4a644a" stroke-width="2" fill="none"/><path d="M50 80 Q 55 75, 52 70 T 50 65" stroke="#4a644a" stroke-width="2" fill="none"/></svg>`;
@@ -386,4 +386,73 @@ export const TREES: Tree[] = [
     growthStages: [ SvgToUrl(RAINBOW_S1_STRING), SvgToUrl(RAINBOW_S2_STRING), SvgToUrl(RAINBOW_S3_STRING), SvgToUrl(RAINBOW_S4_STRING) ],
     price: 10000,
   },
+];
+
+const getPlantedCount = (stats: { plantedForest: { withered: boolean }[] }) => stats.plantedForest.filter(t => !t.withered).length;
+
+export const ACHIEVEMENTS: Achievement[] = [
+    {
+        id: 'first_tree',
+        nameKey: 'ach_first_tree_name',
+        descriptionKey: 'ach_first_tree_desc',
+        goalLabelKey: 'ach_goal_1_tree',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 90 L50 10 L80 90 Z" fill="#c084fc"/><path d="M50 10 L50 80" stroke="white" stroke-width="5"/><text x="50" y="60" font-size="40" fill="white" text-anchor="middle" font-weight="bold">1</text></svg>`,
+        condition: (stats) => getPlantedCount(stats) >= 1,
+    },
+    {
+        id: 'sapling_grower',
+        nameKey: 'ach_sapling_grower_name',
+        descriptionKey: 'ach_sapling_grower_desc',
+        goalLabelKey: 'ach_goal_10_trees',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 90 L50 10 L80 90 Z" fill="#a855f7"/><path d="M50 10 L50 80" stroke="white" stroke-width="5"/><text x="50" y="65" font-size="30" fill="white" text-anchor="middle" font-weight="bold">10</text></svg>`,
+        condition: (stats) => getPlantedCount(stats) >= 10,
+    },
+    {
+        id: 'forest_builder',
+        nameKey: 'ach_forest_builder_name',
+        descriptionKey: 'ach_forest_builder_desc',
+        goalLabelKey: 'ach_goal_50_trees',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 90 L50 10 L80 90 Z" fill="#7e22ce"/><path d="M50 10 L50 80" stroke="white" stroke-width="5"/><text x="50" y="65" font-size="30" fill="white" text-anchor="middle" font-weight="bold">50</text></svg>`,
+        condition: (stats) => getPlantedCount(stats) >= 50,
+    },
+    {
+        id: 'focused_hour',
+        nameKey: 'ach_focused_hour_name',
+        descriptionKey: 'ach_focused_hour_desc',
+        goalLabelKey: 'ach_goal_1_hour',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#22d3ee"/><circle cx="50" cy="50" r="35" fill="white"/><path d="M50 20 V50 H75" stroke="#0891b2" stroke-width="6" fill="none"/><circle cx="50" cy="50" r="5" fill="#0891b2"/></svg>`,
+        condition: (stats) => stats.totalFocusTime >= 3600,
+    },
+    {
+        id: 'marathon_session',
+        nameKey: 'ach_marathon_session_name',
+        descriptionKey: 'ach_marathon_session_desc',
+        goalLabelKey: 'ach_goal_90_min_session',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 50 L30 30 L50 50 L70 30 L90 50" stroke="#f43f5e" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M10 70 L30 50 L50 70 L70 50 L90 70" stroke="#f43f5e" stroke-width="8" fill="none" stroke-linecap="round"/></svg>`,
+        condition: (stats, duration) => (duration || 0) >= 90 * 60,
+    },
+    {
+        id: 'collector',
+        nameKey: 'ach_collector_name',
+        descriptionKey: 'ach_collector_desc',
+        goalLabelKey: 'ach_goal_5_species',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 L90 40 L50 90 L10 40 Z" fill="#facc15"/><path d="M50 20 L80 45 L50 80 L20 45 Z" fill="#eab308"/></svg>`,
+        condition: (stats) => stats.unlockedTrees.length >= 5,
+    },
+    {
+        id: 'arboretum_master',
+        nameKey: 'ach_arboretum_master_name',
+        descriptionKey: 'ach_arboretum_master_desc',
+        goalLabelKey: 'ach_goal_all_species',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 L90 40 L50 90 L10 40 Z" fill="#f59e0b"/><path d="M50 20 L80 45 L50 80 L20 45 Z" fill="#d97706"/><path d="M50,10 L10,40 L50,90 L90,40 Z" stroke="#fff" stroke-width="4" fill="none" transform="rotate(30 50 50) scale(0.5)"/></svg>`,
+        condition: (stats) => stats.unlockedTrees.length === TREES.length,
+    },
+    {
+        id: 'week_streak',
+        nameKey: 'ach_week_streak_name',
+        descriptionKey: 'ach_week_streak_desc',
+        goalLabelKey: 'ach_goal_7_day_streak',
+        badge: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 20 H80 L90 50 L80 80 H20 L10 50 Z" fill="#4ade80"/><text x="50" y="60" font-size="40" fill="#15803d" text-anchor="middle" font-weight="bold">7</text></svg>`,
+        condition: (stats) => stats.currentStreak >= 7,
+    },
 ];

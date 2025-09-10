@@ -6,8 +6,9 @@ import { useTranslation } from '../i18n';
 import { useTheme } from '../theme';
 
 interface SettingsScreenProps {
-  onStart: (duration: number, tree: Tree) => void;
+  onStart: (duration: number, tree: Tree, tag: string) => void;
   onViewForest: () => void;
+  onViewProfile: () => void;
   onShowGuide: () => void;
   onSignOut: () => void;
   userName: string;
@@ -17,10 +18,12 @@ interface SettingsScreenProps {
 }
 
 const DURATIONS = [1, 15, 25, 30, 45, 60, 90, 120]; // in minutes
+const TAGS = ['Work', 'Study', 'Creative', 'Other'];
 
 const SettingsScreen: React.FC<SettingsScreenProps> = ({
   onStart,
   onViewForest,
+  onViewProfile,
   onShowGuide,
   onSignOut,
   userName,
@@ -32,6 +35,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const { theme, toggleTheme } = useTheme();
   const [selectedDuration, setSelectedDuration] = useState(25 * 60);
   const [selectedTree, setSelectedTree] = useState<Tree>(TREES.find(t => unlockedTrees.includes(t.id)) || TREES[0]);
+  const [selectedTag, setSelectedTag] = useState<string>('Work');
   const [error, setError] = useState<string>('');
   const [durationMode, setDurationMode] = useState<'preset' | 'slider'>('preset');
 
@@ -113,6 +117,25 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
           })}
         </div>
       </div>
+       
+      <div className="space-y-3">
+        <h2 className="text-xl font-semibold text-slate-700 dark:text-slate-200">{t('select_tag_label')}</h2>
+        <div className="grid grid-cols-4 gap-3">
+          {TAGS.map((tag) => (
+            <button
+              key={tag}
+              onClick={() => setSelectedTag(tag)}
+              className={`px-4 py-2 rounded-full font-semibold transition-colors text-sm ${
+                selectedTag === tag
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+              }`}
+            >
+              {t(`tag_${tag.toLowerCase()}` as 'tag_work')}
+            </button>
+          ))}
+        </div>
+      </div>
       
       <div className="space-y-3">
         <div className="flex justify-between items-center">
@@ -165,25 +188,31 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
       
       <div className="pt-4 space-y-3">
         <button
-          onClick={() => onStart(selectedDuration, selectedTree)}
+          onClick={() => onStart(selectedDuration, selectedTree, selectedTag)}
           className="w-full bg-emerald-600 text-white font-bold py-3 px-6 rounded-full hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300 dark:focus:ring-emerald-400 transform hover:scale-105 active:scale-100 transition-transform duration-200"
         >
           {t('start_button')}
         </button>
         <div className="flex gap-3">
+           <button
+            onClick={onViewProfile}
+            className="w-full bg-purple-500 text-white font-bold py-3 px-6 rounded-full hover:bg-purple-600 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-400 transition-transform duration-200"
+          >
+            {t('my_profile_button')}
+          </button>
           <button
             onClick={onViewForest}
             className="w-full bg-indigo-500 text-white font-bold py-3 px-6 rounded-full hover:bg-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-400 transition-transform duration-200"
           >
             {t('view_forest_button')}
           </button>
-          <button
+        </div>
+        <button
             onClick={onShowGuide}
             className="w-full bg-slate-500 text-white font-bold py-3 px-6 rounded-full hover:bg-slate-600 focus:outline-none focus:ring-4 focus:ring-slate-300 dark:focus:ring-slate-400 transition-transform duration-200"
           >
             {t('guide_button')}
           </button>
-        </div>
       </div>
     </div>
   );
