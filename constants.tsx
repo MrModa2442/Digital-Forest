@@ -25,11 +25,44 @@ const WILLOW_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/20
 const WILLOW_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 40" stroke="#8c7b62" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M50 45 C 10 65, 20 95, 15 95" stroke="#9aab89" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M50 45 C 90 65, 80 95, 85 95" stroke="#9aab89" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M45 42 C 20 60, 25 85, 20 95" stroke="#b6c8a9" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M55 42 C 80 60, 75 85, 80 95" stroke="#b6c8a9" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M50 45 C 40 70, 45 90, 40 95" stroke="#dde6d5" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M50 45 C 60 70, 55 90, 60 95" stroke="#dde6d5" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`;
 
 // MAPLE SVGs (REDESIGNED)
-const mapleLeafPath = (x: number, y: number, size: number, angle: number, color: string) => `<path transform="translate(${x}, ${y}) rotate(${angle}) scale(${size/20})" d="M10 0 L7.5 5 L2.5 5 L5 9 L4 14 L10 11 L16 14 L15 9 L17.5 5 L12.5 5 Z" fill="${color}"/>`;
-const MAPLE_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 75" stroke="#8a6e45" stroke-width="2"/>${mapleLeafPath(50, 72, 10, 0, "#d9534f")}</svg>`;
-const MAPLE_S2_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 65" stroke="#8a6e45" stroke-width="3"/><path d="M50 80 L 40 70" stroke="#8a6e45" stroke-width="2"/><path d="M50 75 L 60 65" stroke="#8a6e45" stroke-width="2"/>${mapleLeafPath(38, 67, 12, -10, "#d9534f")}${mapleLeafPath(62, 62, 12, 10, "#f0ad4e")}${mapleLeafPath(50, 60, 14, 0, "#d9534f")}</svg>`;
-const MAPLE_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 55" stroke="#8a6e45" stroke-width="5" stroke-linecap="round"/><path d="M50 75 Q 35 70, 30 55" stroke="#8a6e45" stroke-width="4" fill="none"/><path d="M50 70 Q 65 65, 70 50" stroke="#8a6e45" stroke-width="4" fill="none"/>${mapleLeafPath(28, 52, 15, -20, "#d9534f")}${mapleLeafPath(72, 47, 15, 20, "#f0ad4e")}${mapleLeafPath(50, 45, 18, 0, "#d9534f")}${mapleLeafPath(40, 60, 16, -10, "#f0ad4e")}${mapleLeafPath(60, 55, 16, 10, "#d9534f")}</svg>`;
-const MAPLE_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 45" stroke="#8a6e45" stroke-width="8" stroke-linecap="round"/><path d="M50 85 Q 25 75, 20 50" stroke="#8a6e45" stroke-width="6" fill="none"/><path d="M50 80 Q 75 70, 80 45" stroke="#8a6e45" stroke-width="6" fill="none"/>${mapleLeafPath(18, 47, 18, -30, "#d9534f")}${mapleLeafPath(82, 42, 18, 30, "#f0ad4e")}${mapleLeafPath(50, 25, 22, 0, "#d9534f")}${mapleLeafPath(30, 35, 20, -15, "#f0ad4e")}${mapleLeafPath(70, 32, 20, 15, "#d9534f")}${mapleLeafPath(50, 40, 18, 5, "#f0ad4e")}</svg>`;
+const MAPLE_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="maple1grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:#f97316;"/><stop offset="100%" style="stop-color:#dc2626;"/></radialGradient></defs>
+  <path d="M50 95 V 80" stroke="#78350f" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M50 80 L45 70 Q50 65 55 70 L50 80" fill="url(#maple1grad)"/>
+  <path d="M50 72 L40 62 Q50 60 60 62 L50 72" fill="url(#maple1grad)"/>
+</svg>`;
+const MAPLE_S2_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="maple2grad_a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#facc15;"/><stop offset="100%" style="stop-color:#f97316;"/></radialGradient><radialGradient id="maple2grad_b" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#f97316;"/><stop offset="100%" style="stop-color:#dc2626;"/></radialGradient></defs>
+  <path d="M50 95 V 70" stroke="#78350f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 80 L 40 70" stroke="#78350f" stroke-width="3" stroke-linecap="round"/>
+  <path d="M50 75 L 60 65" stroke="#78350f" stroke-width="3" stroke-linecap="round"/>
+  <g transform="translate(32 58) rotate(-20)"><path d="M0 10 L-5 0 Q0 -5 5 0 L0 10" fill="url(#maple2grad_a)"/><path d="M0 2 L-8 -8 Q0 -10 8 -8 L0 2" fill="url(#maple2grad_a)"/></g>
+  <g transform="translate(62 55) rotate(15)"><path d="M0 12 L-6 0 Q0 -6 6 0 L0 12" fill="url(#maple2grad_b)"/><path d="M0 4 L-9 -9 Q0 -12 9 -9 L0 4" fill="url(#maple2grad_b)"/></g>
+  <g transform="translate(45 50) rotate(0)"><path d="M0 15 L-7 0 Q0 -8 7 0 L0 15" fill="url(#maple2grad_b)"/><path d="M0 6 L-10 -10 Q0 -14 10 -10 L0 6" fill="url(#maple2grad_b)"/></g>
+</svg>`;
+const MAPLE_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="maple3grad_a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#facc15;"/><stop offset="100%" style="stop-color:#f97316;"/></radialGradient><radialGradient id="maple3grad_b" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#f97316;"/><stop offset="100%" style="stop-color:#dc2626;"/></radialGradient></defs>
+  <path d="M50 95 V 60" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
+  <path d="M50 75 Q 35 70, 30 55" stroke="#78350f" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path d="M50 70 Q 65 65, 70 50" stroke="#78350f" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <g transform="translate(25 45) rotate(-30)"><path d="M0 15 L-7 0 Q0 -8 7 0 L0 15" fill="url(#maple3grad_b)"/><path d="M0 6 L-10 -10 Q0 -14 10 -10 L0 6" fill="url(#maple3grad_b)"/></g>
+  <g transform="translate(75 42) rotate(30)"><path d="M0 15 L-7 0 Q0 -8 7 0 L0 15" fill="url(#maple3grad_a)"/><path d="M0 6 L-10 -10 Q0 -14 10 -10 L0 6" fill="url(#maple3grad_a)"/></g>
+  <g transform="translate(50 40) rotate(0)"><path d="M0 20 L-9 0 Q0 -10 9 0 L0 20" fill="url(#maple3grad_b)"/><path d="M0 8 L-12 -12 Q0 -16 12 -12 L0 8" fill="url(#maple3grad_b)"/></g>
+  <g transform="translate(38 58) rotate(-15)"><path d="M0 12 L-6 0 Q0 -6 6 0 L0 12" fill="url(#maple3grad_a)"/><path d="M0 4 L-9 -9 Q0 -12 9 -9 L0 4" fill="url(#maple3grad_a)"/></g>
+  <g transform="translate(62 55) rotate(15)"><path d="M0 12 L-6 0 Q0 -6 6 0 L0 12" fill="url(#maple3grad_b)"/><path d="M0 4 L-9 -9 Q0 -12 9 -9 L0 4" fill="url(#maple3grad_b)"/></g>
+</svg>`;
+const MAPLE_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="maple4grad_a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#facc15;"/><stop offset="100%" style="stop-color:#f97316;"/></radialGradient><radialGradient id="maple4grad_b" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#f97316;"/><stop offset="100%" style="stop-color:#b91c1c;"/></radialGradient></defs>
+  <path d="M50 95 V 50" stroke="#78350f" stroke-width="9" stroke-linecap="round"/>
+  <path d="M50 85 Q 25 75, 20 50" stroke="#78350f" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M50 80 Q 75 70, 80 45" stroke="#78350f" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <g transform="translate(15 45) rotate(-40)"><path d="M0 18 L-8 0 Q0 -9 8 0 L0 18" fill="url(#maple4grad_b)"/><path d="M0 7 L-11 -11 Q0 -15 11 -11 L0 7" fill="url(#maple4grad_b)"/></g>
+  <g transform="translate(85 38) rotate(40)"><path d="M0 18 L-8 0 Q0 -9 8 0 L0 18" fill="url(#maple4grad_a)"/><path d="M0 7 L-11 -11 Q0 -15 11 -11 L0 7" fill="url(#maple4grad_a)"/></g>
+  <g transform="translate(50 25) rotate(0)"><path d="M0 25 L-10 0 Q0 -12 10 0 L0 25" fill="url(#maple4grad_b)"/><path d="M0 10 L-14 -14 Q0 -18 14 -14 L0 10" fill="url(#maple4grad_b)"/></g>
+  <g transform="translate(30 35) rotate(-20)"><path d="M0 20 L-9 0 Q0 -10 9 0 L0 20" fill="url(#maple4grad_a)"/><path d="M0 8 L-12 -12 Q0 -16 12 -12 L0 8" fill="url(#maple4grad_a)"/></g>
+  <g transform="translate(70 32) rotate(20)"><path d="M0 20 L-9 0 Q0 -10 9 0 L0 20" fill="url(#maple4grad_b)"/><path d="M0 8 L-12 -12 Q0 -16 12 -12 L0 8" fill="url(#maple4grad_b)"/></g>
+  <g transform="translate(50 45) rotate(5)"><path d="M0 15 L-7 0 Q0 -8 7 0 L0 15" fill="url(#maple4grad_a)"/><path d="M0 6 L-10 -10 Q0 -14 10 -10 L0 6" fill="url(#maple4grad_a)"/></g>
+</svg>`;
 
 // BAOBAB SVGs
 const BAOBAB_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 C 48 85, 52 85, 50 75" stroke="#a1887f" stroke-width="3" fill="none"/><path d="M50 75 L 45 70" stroke="#a1887f" stroke-width="2"/><path d="M50 75 L 55 70" stroke="#a1887f" stroke-width="2"/></svg>`;
@@ -53,11 +86,79 @@ const JACARANDA_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org
 // --- NEW TREES START ---
 
 // JOSHUA TREE SVGs (REDESIGNED)
-const joshuaLeafCluster = (x: number, y: number, size: number, angle: number) => `<g transform="translate(${x}, ${y}) rotate(${angle}) scale(${size/10})"><path d="M0 0 L-4 -8 L0 -6 L4 -8 Z" fill="#556B2F"/><path d="M0 0 L-6 -2 L-8 2 L-2 2 Z" fill="#556B2F"/><path d="M0 0 L6 -2 L8 2 L2 2 Z" fill="#556B2F"/><path d="M0 0 L-2 6 L2 6 Z" fill="#556B2F"/></g>`;
-const JOSHUA_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 80" stroke="#8B6914" stroke-width="3"/>${joshuaLeafCluster(50, 80, 10, 0)}</svg>`;
-const JOSHUA_S2_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 75" stroke="#8B6914" stroke-width="4"/><path d="M50 75 C 40 70, 40 65, 35 65" stroke="#8B6914" stroke-width="3" fill="none"/><path d="M50 75 C 60 70, 60 65, 65 65" stroke="#8B6914" stroke-width="3" fill="none"/>${joshuaLeafCluster(35, 65, 12, -30)}${joshuaLeafCluster(65, 65, 12, 30)}</svg>`;
-const JOSHUA_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 70" stroke="#8B6914" stroke-width="6"/><path d="M50 70 C 30 65, 25 55, 25 50" stroke="#8B6914" stroke-width="4" fill="none"/><path d="M50 70 C 70 65, 75 55, 75 50" stroke="#8B6914" stroke-width="4" fill="none"/><path d="M75 50 C 80 45, 85 45, 85 40" stroke="#8B6914" stroke-width="3" fill="none"/>${joshuaLeafCluster(25, 50, 14, -60)}${joshuaLeafCluster(85, 40, 14, 45)}${joshuaLeafCluster(50, 70, 10, 0)}</svg>`;
-const JOSHUA_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 65" stroke="#8B6914" stroke-width="8"/><path d="M50 65 C 25 60, 20 45, 20 40" stroke="#8B6914" stroke-width="5" fill="none"/><path d="M50 65 C 75 60, 80 45, 80 40" stroke="#8B6914" stroke-width="5" fill="none"/><path d="M20 40 C 15 35, 15 30, 10 30" stroke="#8B6914" stroke-width="4" fill="none"/><path d="M80 40 C 85 35, 85 30, 90 30" stroke="#8B6914" stroke-width="4" fill="none"/>${joshuaLeafCluster(10, 30, 15, -70)}${joshuaLeafCluster(90, 30, 15, 70)}${joshuaLeafCluster(40, 50, 12, -45)}${joshuaLeafCluster(60, 50, 12, 45)}</svg>`;
+const JOSHUA_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="joshTrunk1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a37e2c"/><stop offset="50%" stop-color="#c7a553"/><stop offset="100%" stop-color="#a37e2c"/></linearGradient></defs>
+  <path d="M50 95 C 48 85 52 85 50 80" stroke="url(#joshTrunk1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g transform="translate(50 80)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+  </g>
+</svg>`;
+const JOSHUA_S2_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="joshTrunk2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a37e2c"/><stop offset="50%" stop-color="#c7a553"/><stop offset="100%" stop-color="#a37e2c"/></linearGradient></defs>
+  <path d="M50 95 V 75" stroke="url(#joshTrunk2)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M50 75 C 40 70 40 65 35 65" stroke="url(#joshTrunk2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M50 75 C 60 70 60 65 65 65" stroke="url(#joshTrunk2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g transform="translate(35 65) rotate(-20) scale(1.2)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+  </g>
+  <g transform="translate(65 65) rotate(20) scale(1.2)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+  </g>
+</svg>`;
+const JOSHUA_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="joshTrunk3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a37e2c"/><stop offset="50%" stop-color="#c7a553"/><stop offset="100%" stop-color="#a37e2c"/></linearGradient></defs>
+  <path d="M50 95 V 70" stroke="url(#joshTrunk3)" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M50 70 C 30 65 25 55 25 50" stroke="url(#joshTrunk3)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M50 70 C 70 65 75 55 75 50" stroke="url(#joshTrunk3)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M75 50 C 80 45 85 45 85 40" stroke="url(#joshTrunk3)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <g transform="translate(25 50) rotate(-45) scale(1.4)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+    <circle cx="0" cy="-2" r="1.5" fill="#fff8e7"/>
+  </g>
+  <g transform="translate(85 40) rotate(35) scale(1.4)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+  </g>
+</svg>`;
+const JOSHUA_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="joshTrunk4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a37e2c"/><stop offset="50%" stop-color="#c7a553"/><stop offset="100%" stop-color="#a37e2c"/></linearGradient></defs>
+  <path d="M50 95 V 65" stroke="url(#joshTrunk4)" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M50 65 C 25 60 20 45 20 40" stroke="url(#joshTrunk4)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M50 65 C 75 60 80 45 80 40" stroke="url(#joshTrunk4)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M20 40 C 15 35 15 30 10 30" stroke="url(#joshTrunk4)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M80 40 C 85 35 85 30 90 30" stroke="url(#joshTrunk4)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <g transform="translate(10 30) rotate(-60) scale(1.5)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+    <circle cx="0" cy="-2" r="1.5" fill="#fff8e7"/>
+  </g>
+  <g transform="translate(90 30) rotate(60) scale(1.5)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+  </g>
+  <g transform="translate(40 50) rotate(-30) scale(1.3)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+    <circle cx="0" cy="-2" r="1.5" fill="#fff8e7"/>
+  </g>
+  <g transform="translate(60 50) rotate(30) scale(1.3)">
+    <path d="M0 0 L-5 -10 L0 -8 L5 -10 Z" fill="#6b8e23"/>
+    <path d="M0 0 L-8 -2 L-10 2 L-2 2 Z" fill="#556b2f"/>
+    <path d="M0 0 L8 -2 L10 2 L2 2 Z" fill="#556b2f"/>
+  </g>
+</svg>`;
 
 // PALM TREE SVGs
 const PALM_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 C 60 85, 65 75, 70 65" stroke="#3A5F0B" stroke-width="2" fill="none"/><path d="M50 95 C 40 85, 35 75, 30 65" stroke="#3A5F0B" stroke-width="2" fill="none"/></svg>`;
@@ -110,10 +211,48 @@ const BONSAI_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/20
 const BONSAI_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M25 95 H 75 V 85 H 25 Z" fill="#604C3D"/><path d="M50 85 Q 30 70 45 60 Q 60 50 40 40 Q 55 30 50 20" stroke="#5C4033" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="52" cy="18" r="12" fill="#228B22"/><circle cx="38" cy="38" r="15" fill="#228B22"/><circle cx="48" cy="58" r="14" fill="#228B22"/></svg>`;
 
 // SEQUOIA SVGs (REDESIGNED)
-const SEQUOIA_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M48 95 H 52 L 51 80 H 49 Z" fill="#8B4513"/><path d="M50 80 L 45 75 L 55 75 Z" fill="#2E4032"/></svg>`;
-const SEQUOIA_S2_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M45 95 H 55 L 52 60 H 48 Z" fill="#8B4513"/><path d="M50 75 L 40 70 L 60 70 Z" fill="#2E4032"/><path d="M50 65 L 45 60 L 55 60 Z" fill="#2E4032"/></svg>`;
-const SEQUOIA_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M40 95 H 60 L 54 40 H 46 Z" fill="#8B4513" stroke-linecap="round"/><path d="M50 60 L 30 55 L 70 55 Z" fill="#2E4032"/><path d="M50 50 L 35 45 L 65 45 Z" fill="#2E4032"/><path d="M50 40 L 40 35 L 60 35 Z" fill="#2E4032"/></svg>`;
-const SEQUOIA_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M35 95 H 65 L 56 20 H 44 Z" fill="#8B4513" stroke-linecap="round"/><path d="M50 50 L 20 45 L 80 45 Z" fill="#2E4032"/><path d="M50 40 L 25 35 L 75 35 Z" fill="#2E4032"/><path d="M50 30 L 30 25 L 70 25 Z" fill="#2E4032"/><path d="M50 20 L 40 15 L 60 15 Z" fill="#2E4032"/></svg>`;
+const SEQUOIA_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="seqTrunk1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a16207"/><stop offset="50%" stop-color="#ca8a04"/><stop offset="100%" stop-color="#a16207"/></linearGradient></defs>
+  <path d="M47 95 H 53 L 51 80 H 49 Z" fill="url(#seqTrunk1)"/>
+  <path d="M50 80 L 40 70 L 60 70 Z" fill="#14532d"/>
+  <path d="M50 72 L 45 65 L 55 65 Z" fill="#166534"/>
+</svg>`;
+const SEQUOIA_S2_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="seqTrunk2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a16207"/><stop offset="50%" stop-color="#ca8a04"/><stop offset="100%" stop-color="#a16207"/></linearGradient></defs>
+  <path d="M44 95 H 56 L 53 60 H 47 Z" fill="url(#seqTrunk2)"/>
+  <path d="M50 75 L 35 60 L 65 60 Z" fill="#14532d"/>
+  <path d="M50 65 L 40 50 L 60 50 Z" fill="#15803d"/>
+  <path d="M50 55 L 45 45 L 55 45 Z" fill="#16a34a"/>
+</svg>`;
+const SEQUOIA_S3_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="seqTrunk3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#a16207"/><stop offset="50%" stop-color="#ca8a04"/><stop offset="100%" stop-color="#a16207"/></linearGradient></defs>
+  <path d="M40 95 H 60 L 55 40 H 45 Z" fill="url(#seqTrunk3)"/>
+  <path d="M50 65 L 25 50 L 75 50 Z" fill="#14532d"/>
+  <path d="M50 55 L 30 40 L 70 40 Z" fill="#15803d"/>
+  <path d="M50 45 L 35 30 L 65 30 Z" fill="#16a34a"/>
+  <path d="M50 35 L 45 25 L 55 25 Z" fill="#22c55e"/>
+</svg>`;
+const SEQUOIA_S4_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="seqTrunk4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="30%" stop-color="#ca8a04"/>
+      <stop offset="70%" stop-color="#ca8a04"/>
+      <stop offset="100%" stop-color="#a16207"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M35 95 H 65 L 58 20 H 42 Z" fill="url(#seqTrunk4)"/>
+    <path d="M50 70 L 15 50 L 85 50 Z" fill="#14532d"/>
+    <path d="M50 60 L 20 40 L 80 40 Z" fill="#15803d"/>
+    <path d="M50 50 L 25 30 L 75 30 Z" fill="#16a34a"/>
+    <path d="M50 40 L 30 20 L 70 20 Z" fill="#22c55e"/>
+    <path d="M50 30 L 40 10 L 60 10 Z" fill="#4ade80"/>
+  </g>
+</svg>`;
 
 // RAINBOW EUCALYPTUS SVGs
 const RAINBOW_S1_STRING = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 95 V 70" stroke="#A9A9A9" stroke-width="2"/><circle cx="50" cy="65" r="5" fill="#6B8E23"/></svg>`;
