@@ -7,7 +7,6 @@ import TimerScreen from './components/TimerScreen';
 import CompletionScreen from './components/CompletionScreen';
 import ForestScreen from './components/ForestScreen';
 import SplashScreen from './components/SplashScreen';
-import AuthScreen from './components/AuthScreen';
 import Guide from './components/Guide';
 import ProfileScreen from './components/ProfileScreen';
 
@@ -39,15 +38,9 @@ const useLocalStorage = <T,>(key: string, initialValue: T): [T, React.Dispatch<R
   return [storedValue, setValue];
 };
 
-interface User {
-  firstName: string;
-  lastName: string;
-}
-
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [appState, setAppState] = useState<AppState>(AppState.SETTINGS);
-  const [user, setUser] = useLocalStorage<User | null>('user', null);
   const [showGuide, setShowGuide] = useState(false);
   
   // Timer settings
@@ -172,15 +165,6 @@ const App: React.FC = () => {
     setAppState(AppState.PROFILE);
   }, []);
   
-  const handleAuth = useCallback((firstName: string, lastName:string) => {
-    setUser({ firstName, lastName });
-  }, [setUser]);
-  
-  const handleSignOut = useCallback(() => {
-    setUser(null);
-    setAppState(AppState.SETTINGS);
-  }, [setUser]);
-
   const handleUnlockTree = useCallback((treeId: string, price: number) => {
     if (coins >= price) {
       setCoins(c => c - price);
@@ -199,10 +183,6 @@ const App: React.FC = () => {
   }, [coins, setCoins, setUnlockedTrees, userStats, unlockedAchievements, setUnlockedAchievements]);
 
   const renderContent = () => {
-    if (!user) {
-      return <AuthScreen onAuth={handleAuth} />;
-    }
-    
     switch (appState) {
       case AppState.TIMING:
         return <TimerScreen duration={duration} tree={selectedTree} onComplete={handleComplete} onCancel={handleCancel} />;
@@ -226,11 +206,9 @@ const App: React.FC = () => {
             onViewForest={handleViewForest}
             onViewProfile={handleViewProfile}
             onShowGuide={() => setShowGuide(true)}
-            userName={user.firstName}
             coins={coins}
             unlockedTrees={unlockedTrees}
             onUnlockTree={handleUnlockTree}
-            onSignOut={handleSignOut}
           />
         );
     }

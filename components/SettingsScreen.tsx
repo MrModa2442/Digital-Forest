@@ -10,8 +10,6 @@ interface SettingsScreenProps {
   onViewForest: () => void;
   onViewProfile: () => void;
   onShowGuide: () => void;
-  onSignOut: () => void;
-  userName: string;
   coins: number;
   unlockedTrees: string[];
   onUnlockTree: (treeId: string, price: number) => void;
@@ -25,8 +23,6 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   onViewForest,
   onViewProfile,
   onShowGuide,
-  onSignOut,
-  userName,
   coins,
   unlockedTrees,
   onUnlockTree,
@@ -70,14 +66,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
           )}
         </button>
-        <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-300">{t('welcome_message', { name: userName })}</h1>
-        <button
-          onClick={onSignOut}
-          className="absolute top-0 right-0 text-sm text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors font-semibold px-2 py-1"
-          aria-label={t('sign_out_button') as string}
-        >
-          {t('sign_out_button')}
-        </button>
+        <h1 className="text-2xl font-bold text-emerald-800 dark:text-emerald-300">{t('welcome_message')}</h1>
         <div className="mt-2 flex items-center justify-center gap-2 text-lg font-semibold text-yellow-600 dark:text-yellow-400">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a.75.75 0 01.75.75v.552c1.124.228 2.14.71 2.992 1.368l.383-.383a.75.75 0 111.06 1.06l-.382.382c.658.853 1.14 1.869 1.368 2.992h.552a.75.75 0 010 1.5h-.552c-.228 1.124-.71 2.14-1.368 2.992l.382.382a.75.75 0 11-1.06 1.06l-.383-.382c-.853.658-1.869 1.14-2.992 1.368v.552a.75.75 0 01-1.5 0v-.552c-1.124-.228-2.14-.71-2.992-1.368l-.383.382a.75.75 0 11-1.06-1.06l.382-.382c-.658-.853-1.14-1.869-1.368-2.992H3.25a.75.75 0 010-1.5h.552c.228-1.124.71 2.14 1.368-2.992l-.382-.382a.75.75 0 011.06-1.06l.383.382c.853-.658 1.869 1.14 2.992-1.368V2.75A.75.75 0 0110 2zM8.5 7.25a.75.75 0 00-1.5 0v5.5a.75.75 0 001.5 0v-5.5zM11.5 7.25a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5z"/></svg>
           <span>{t('your_coins')} {coins}</span>

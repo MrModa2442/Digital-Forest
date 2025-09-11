@@ -7,15 +7,16 @@ export const translations = {
     digital_forest: 'Digital Forest',
     splash_creator_credit: 'by Mohammadreza Nosrati Amirabadi',
 
+    // FIX: Add missing translation keys for AuthScreen.
     // Auth
-    auth_header: 'Enter your name to start your forest.',
+    auth_header: 'Please enter your name to create your personalized forest.',
     first_name_placeholder: 'First Name',
     last_name_placeholder: 'Last Name',
-    auth_button: 'Start Growing',
+    auth_button: 'Enter My Forest',
     auth_error: 'Please enter both your first and last name.',
 
     // Settings
-    welcome_message: 'Welcome, {{name}}!',
+    welcome_message: 'Welcome to Your Forest',
     your_coins: 'Your Coins:',
     select_tree: 'Select a Tree',
     select_duration: 'Select Focus Duration',
@@ -29,7 +30,6 @@ export const translations = {
     guide_button: 'How to Play',
     preset_label: 'Preset',
     slider_label: 'Slider',
-    sign_out_button: 'Sign Out',
     toggle_theme: 'Toggle theme',
     select_tag_label: 'Select a Tag',
     tag_work: 'Work',
