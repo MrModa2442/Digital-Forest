@@ -103,15 +103,11 @@ const App: React.FC = () => {
   }, []);
 
   const handleCancel = useCallback(() => {
-    const witheredTree: PlantedTree = {
-      id: `tree-${Date.now()}`,
-      treeId: selectedTree.id,
-      datePlanted: Date.now(),
-      withered: true,
-    };
-    setPlantedForest(prev => [...prev, witheredTree]);
+    // By user request, we are no longer adding a withered tree to the forest
+    // when a user gives up on a timer. This prevents visual clutter and
+    // the reported bug of trees overlapping.
     setAppState(AppState.SETTINGS);
-  }, [selectedTree, setPlantedForest]);
+  }, []);
 
   const handleComplete = useCallback(() => {
     // Coins
