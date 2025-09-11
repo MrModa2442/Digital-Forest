@@ -138,7 +138,13 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchiev
           <StatCard label={t('trees_planted') as string} value={plantedCount} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h10a3 3 0 013 3v5a.997.997 0 01-.293-.707zM11 6a1 1 0 10-2 0v3H6a1 1 0 100 2h3v3a1 1 0 102 0v-3h3a1 1 0 100-2h-3V6z" /></svg>} />
           <StatCard label={t('withered_trees') as string} value={witheredCount} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" /></svg>} />
           <StatCard label={t('total_focused') as string} value={formatTime(userStats.totalFocusTime)} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" /></svg>} />
-          <StatCard label={t('current_streak') as string} value={userStats.currentStreak} icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2c-1.107 0-2.115.424-2.88 1.154-1.285 1.23-1.55 3.352-.777 4.908.2.396.48.74.808 1.012.33.27.702.468 1.11.558.406.09.83.045 1.22-.11.392-.155.727-.438.98-.802a4.5 4.5 0 00.344-5.262A3.92 3.92 0 0010 2Zm3.937 6.368a.75.75 0 01-1.026.292.75.75 0 00-.813 1.213 2.25 2.25 0 012.878 2.164.75.75 0 101.48-.222 3.75 3.75 0 00-2.519-3.447Z" /><path d="M6.94 8.87a.75.75 0 01-1.037.262l-.001-.001a3.75 3.75 0 00-3.148 5.485.75.75 0 101.442.385 2.25 2.25 0 011.889-3.29.75.75 0 00.324-1.246.75.75 0 01.53-.595Z" /></svg>} />
+          <StatCard label={t('current_streak') as string} value={userStats.currentStreak} icon={
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+              <path d="M25,48 C 20,40 14,35 14,28 C 12,24 16,20 18,22 C 18,15 25,5 25,5 C 25,5 32,15 32,22 C 34,20 38,24 36,28 C 36,35 30,40 25,48Z" fill="#059669"/>
+              <path d="M25,45 C 22,38 18,34 18,28 C 19,25 20,24 22,26 C 22,21 25,12 25,12 C 25,12 28,21 28,26 C 30,24 31,25 32,28 C 32,34 28,38 25,45Z" fill="#34d399"/>
+              <path d="M25,42 C 23,38 21,35 21,30 C 22,28 23,28 24,29 C 24,25 25,19 25,19 C 25,19 26,25 26,29 C 27,28 28,28 29,30 C 29,35 27,38 25,42Z" fill="#a7f3d0"/>
+            </svg>
+          } />
         </div>
       </div>
       
