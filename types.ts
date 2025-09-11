@@ -17,11 +17,12 @@ export interface Tree {
 }
 
 export interface PlantedTree {
-  id: string;
+  id:string;
   treeId: string;
   datePlanted: number;
   withered: boolean;
   tag?: string;
+  duration: number; // in seconds
 }
 
 export interface UserStats {

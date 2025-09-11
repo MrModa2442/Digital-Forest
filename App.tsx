@@ -140,6 +140,7 @@ const App: React.FC = () => {
       datePlanted: Date.now(),
       withered: false,
       tag: selectedTag,
+      duration: duration,
     };
     setPlantedForest(prev => [...prev, newTree]);
     

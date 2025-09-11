@@ -5,12 +5,15 @@ import { translations } from './translations';
 // Define the available locales as a type
 export type Locale = keyof typeof translations;
 
+export const availableLocales = Object.keys(translations) as Locale[];
+
 // Derive the keys from the English translations object to ensure type safety
 type TranslationKey = keyof typeof translations.en;
 
 interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  availableLocales: Locale[];
   // The 't' function can return a string for simple translations,
   // or an array of strings (for things like motivational quotes).
   t: (key: TranslationKey, options?: { [key: string]: string | number }) => string | string[];
@@ -69,7 +72,7 @@ export const LanguageProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
   
   // Memoize the context value to prevent unnecessary re-renders.
-  const contextValue = useMemo(() => ({ locale, setLocale, t }), [locale]);
+  const contextValue = useMemo(() => ({ locale, setLocale, t, availableLocales }), [locale]);
 
   return (
     <LanguageContext.Provider value={contextValue}>
