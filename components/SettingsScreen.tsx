@@ -33,7 +33,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const [selectedTree, setSelectedTree] = useState<Tree>(TREES.find(t => unlockedTrees.includes(t.id)) || TREES[0]);
   const [selectedTag, setSelectedTag] = useState<string>('Work');
   const [error, setError] = useState<string>('');
-  const [durationMode, setDurationMode] = useState<'preset' | 'slider'>('preset');
+  const [durationMode, setDurationMode] = useState<'preset' | 'slider'>('slider');
 
   const handleBuyTree = (tree: Tree) => {
     if (coins >= tree.price) {
