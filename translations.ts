@@ -37,6 +37,10 @@ export const translations = {
     tag_creative: 'Creative',
     tag_other: 'Other',
     my_profile_button: 'My Profile',
+    select_theme: 'Select a Theme',
+    theme_forest: 'Forest Green',
+    theme_sunset: 'Sunset Orange',
+    theme_misty: 'Misty Blue',
 
     // Timer
     give_up_button: 'Give Up',

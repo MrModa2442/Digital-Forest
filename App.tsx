@@ -237,7 +237,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-100 dark:from-slate-900 dark:to-emerald-900 flex items-center justify-center p-4 font-sans transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-[var(--color-background-from-light)] to-[var(--color-background-to-light)] dark:from-slate-900 dark:to-[var(--color-background-to-dark)] flex items-center justify-center p-4 font-sans transition-colors duration-500">
       <SplashScreen isVisible={isLoading} />
       <main className="w-full max-w-md mx-auto">
         {renderContent()}

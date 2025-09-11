@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { UserStats } from '../types';
 import { useTranslation } from '../i18n';
 import { ACHIEVEMENTS } from '../constants';
+import { useTheme } from '../theme';
 
 interface ProfileScreenProps {
   userStats: UserStats;
@@ -9,6 +10,12 @@ interface ProfileScreenProps {
   onBack: () => void;
   onDeleteProgress: () => void;
 }
+
+const THEMES = [
+    { id: 'forest', nameKey: 'theme_forest', color: 'bg-[#059669]' },
+    { id: 'sunset', nameKey: 'theme_sunset', color: 'bg-[#f97316]' },
+    { id: 'misty', nameKey: 'theme_misty', color: 'bg-[#2563eb]' },
+] as const;
 
 const formatTime = (totalSeconds: number): string => {
   const hours = Math.floor(totalSeconds / 3600);
@@ -18,6 +25,7 @@ const formatTime = (totalSeconds: number): string => {
 
 const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchievements, onBack, onDeleteProgress }) => {
   const { t } = useTranslation();
+  const { themeName, setThemeName } = useTheme();
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   
   const plantedCount = userStats.plantedForest.filter(t => !t.withered).length;
@@ -25,7 +33,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchiev
 
   const StatCard: React.FC<{ label: string; value: string | number; icon: React.ReactNode }> = ({ label, value, icon }) => (
     <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-lg text-center">
-      <div className="text-emerald-600 dark:text-emerald-400 w-8 h-8 mx-auto mb-2">{icon}</div>
+      <div className="text-[var(--color-primary)] dark:text-[var(--color-primary)] w-8 h-8 mx-auto mb-2">{icon}</div>
       <p className="text-2xl font-bold text-slate-800 dark:text-slate-100">{value}</p>
       <p className="text-sm text-slate-500 dark:text-slate-400">{label}</p>
     </div>
@@ -34,10 +42,10 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchiev
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 sm:p-8 space-y-6 animate-slide-in-fade-in w-full max-w-md">
       <header className="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-700">
-        <h1 className="text-3xl font-bold text-emerald-800 dark:text-emerald-300">{t('profile_title')}</h1>
+        <h1 className="text-3xl font-bold text-[var(--color-header-light)] dark:text-[var(--color-header-dark)]">{t('profile_title')}</h1>
         <button
           onClick={onBack}
-          className="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold py-2 px-4 rounded-full transition-colors flex items-center gap-2 hover:bg-emerald-50 dark:hover:bg-slate-700 active:scale-95"
+          className="text-slate-500 dark:text-slate-400 hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary)] font-semibold py-2 px-4 rounded-full transition-colors flex items-center gap-2 hover:bg-[var(--color-primary)]/10 dark:hover:bg-slate-700 active:scale-95"
           aria-label={t('profile_back_button') as string}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -82,6 +90,20 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchiev
               </div>
             );
           })}
+        </div>
+      </div>
+
+       <div>
+        <h2 className="text-xl font-semibold text-slate-700 dark:text-slate-200 mb-4">{t('select_theme')}</h2>
+        <div className="flex justify-around items-center p-2 bg-slate-100 dark:bg-slate-700/50 rounded-full">
+            {THEMES.map(theme => (
+                <button
+                    key={theme.id}
+                    onClick={() => setThemeName(theme.id)}
+                    title={t(theme.nameKey) as string}
+                    className={`w-10 h-10 rounded-full transition-all duration-200 ${theme.color} ${themeName === theme.id ? 'ring-4 ring-offset-2 dark:ring-offset-slate-800 ring-[var(--color-primary)]' : 'ring-2 ring-transparent hover:ring-4'}`}
+                />
+            ))}
         </div>
       </div>
 

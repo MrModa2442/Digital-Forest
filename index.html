@@ -17,6 +17,8 @@
       if (theme === 'dark') {
         document.documentElement.classList.add('dark');
       }
+      const colorTheme = localStorage.getItem('app-color-theme') || 'forest';
+      document.documentElement.setAttribute('data-theme', colorTheme);
     } catch (e) {
       console.error('Could not apply theme from localStorage', e);
     }
@@ -29,6 +31,50 @@
       font-family: 'Nunito', sans-serif;
     }
 
+    /* Color Theme Variables */
+    :root { /* Forest Green (Default) */
+      --color-primary: #059669; /* emerald-600 */
+      --color-primary-hover: #047857; /* emerald-700 */
+      --color-primary-focus: #6ee7b7; /* emerald-300 */
+      --color-header-light: #065f46; /* emerald-800 */
+      --color-header-dark: #6ee7b7; /* emerald-300 */
+      --color-secondary: #4f46e5; /* indigo-600 */
+      --color-secondary-hover: #4338ca; /* indigo-700 */
+      --color-tertiary: #7c3aed; /* purple-600 */
+      --color-tertiary-hover: #6d28d9; /* purple-700 */
+      --color-background-from-light: #ecfdf5; /* emerald-50 */
+      --color-background-to-light: #d1fae5; /* emerald-200 */
+      --color-background-to-dark: #064e3b; /* emerald-900 */
+    }
+    html[data-theme="sunset"] {
+      --color-primary: #f97316; /* orange-500 */
+      --color-primary-hover: #ea580c; /* orange-600 */
+      --color-primary-focus: #fdba74; /* orange-300 */
+      --color-header-light: #9a3412; /* orange-800 */
+      --color-header-dark: #fb923c; /* orange-400 */
+      --color-secondary: #e11d48; /* rose-600 */
+      --color-secondary-hover: #be123c; /* rose-700 */
+      --color-tertiary: #c026d3; /* fuchsia-600 */
+      --color-tertiary-hover: #a21caf; /* fuchsia-700 */
+      --color-background-from-light: #fff7ed; /* orange-50 */
+      --color-background-to-light: #ffedd5; /* orange-100 */
+      --color-background-to-dark: #881337; /* rose-900 */
+    }
+    html[data-theme="misty"] {
+      --color-primary: #2563eb; /* blue-600 */
+      --color-primary-hover: #1d4ed8; /* blue-700 */
+      --color-primary-focus: #93c5fd; /* blue-300 */
+      --color-header-light: #1e3a8a; /* blue-900 */
+      --color-header-dark: #60a5fa; /* blue-400 */
+      --color-secondary: #0891b2; /* cyan-600 */
+      --color-secondary-hover: #0e7490; /* cyan-700 */
+      --color-tertiary: #4f46e5; /* indigo-600 */
+      --color-tertiary-hover: #4338ca; /* indigo-700 */
+      --color-background-from-light: #eff6ff; /* blue-50 */
+      --color-background-to-light: #e0f2fe; /* sky-100 */
+      --color-background-to-dark: #1e40af; /* blue-900 */
+    }
+    
     @keyframes slide-in-fade-in {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }

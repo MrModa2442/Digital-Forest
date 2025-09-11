@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect, useMemo } from 'react';
 import type { Tree } from '../types';
 import { useTranslation } from '../i18n';
@@ -45,7 +46,7 @@ const TimerScreen: React.FC<TimerScreenProps> = ({ duration, tree, onComplete, o
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 space-y-6 flex flex-col items-center justify-between min-h-[500px] animate-slide-in-fade-in">
       <div className="text-center">
         <p className="text-lg text-slate-500 dark:text-slate-400 italic">"{quote}"</p>
-        <h1 className="text-7xl font-bold text-emerald-800 dark:text-emerald-300 tracking-tighter my-4">
+        <h1 className="text-7xl font-bold text-[var(--color-header-light)] dark:text-[var(--color-header-dark)] tracking-tighter my-4">
           {formatTime(timeLeft)}
         </h1>
       </div>

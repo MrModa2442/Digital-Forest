@@ -48,10 +48,10 @@ const ForestScreen: React.FC<ForestScreenProps> = ({ plantedForest, onBack }) =>
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 sm:p-8 space-y-4 animate-slide-in-fade-in flex flex-col h-[80vh] max-h-[700px]">
       <header className="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
-        <h1 className="text-2xl sm:text-3xl font-bold text-emerald-800 dark:text-emerald-300">{t('my_forest')}</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--color-header-light)] dark:text-[var(--color-header-dark)]">{t('my_forest')}</h1>
         <button
           onClick={onBack}
-          className="text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold py-2 px-4 rounded-full transition-colors flex items-center gap-2 hover:bg-emerald-50 dark:hover:bg-slate-700 active:scale-95"
+          className="text-slate-500 dark:text-slate-400 hover:text-[var(--color-primary)] dark:hover:text-[var(--color-primary)] font-semibold py-2 px-4 rounded-full transition-colors flex items-center gap-2 hover:bg-[var(--color-primary)]/10 dark:hover:bg-slate-700 active:scale-95"
           title={t('forest_back_button') as string}
           aria-label={t('forest_back_button') as string}
         >
