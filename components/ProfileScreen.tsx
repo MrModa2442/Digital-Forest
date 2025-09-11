@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UserStats } from '../types';
 import { useTranslation } from '../i18n';
 import { ACHIEVEMENTS } from '../constants';
@@ -7,6 +7,7 @@ interface ProfileScreenProps {
   userStats: UserStats;
   unlockedAchievements: string[];
   onBack: () => void;
+  onDeleteProgress: () => void;
 }
 
 const formatTime = (totalSeconds: number): string => {
@@ -15,8 +16,9 @@ const formatTime = (totalSeconds: number): string => {
   return `${hours}h ${minutes}m`;
 };
 
-const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchievements, onBack }) => {
+const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchievements, onBack, onDeleteProgress }) => {
   const { t } = useTranslation();
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   
   const plantedCount = userStats.plantedForest.filter(t => !t.withered).length;
   const witheredCount = userStats.plantedForest.length - plantedCount;
@@ -82,6 +84,42 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ userStats, unlockedAchiev
           })}
         </div>
       </div>
+
+      <div className="pt-6 mt-2">
+        <div className="border-t-4 border-red-500/50 rounded-lg p-4 bg-red-50 dark:bg-red-900/20">
+            <h3 className="text-xl font-bold text-red-700 dark:text-red-400">{t('danger_zone_title')}</h3>
+            <p className="text-slate-600 dark:text-slate-400 mt-1 mb-4 text-sm">{t('danger_zone_desc')}</p>
+            <button
+            onClick={() => setShowConfirmDelete(true)}
+            className="w-full bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-400 transition-all duration-200"
+            >
+            {t('delete_progress_button')}
+            </button>
+        </div>
+      </div>
+
+      {showConfirmDelete && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 animate-fade-in-fast">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 m-4 max-w-sm w-full space-y-6 text-center animate-pop-in">
+                <h2 className="text-2xl font-bold text-red-600 dark:text-red-400">{t('delete_confirm_title')}</h2>
+                <p className="text-slate-600 dark:text-slate-300">{t('delete_confirm_message')}</p>
+                <div className="flex gap-4">
+                    <button
+                        onClick={() => setShowConfirmDelete(false)}
+                        className="w-full bg-slate-200 dark:bg-slate-600 text-slate-800 dark:text-slate-100 font-bold py-3 px-6 rounded-full hover:bg-slate-300 dark:hover:bg-slate-500 transition-transform duration-200 active:scale-95"
+                    >
+                        {t('cancel_button')}
+                    </button>
+                    <button
+                        onClick={onDeleteProgress}
+                        className="w-full bg-red-600 text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-transform duration-200 active:scale-95"
+                    >
+                        {t('delete_button')}
+                    </button>
+                </div>
+            </div>
+        </div>
+    )}
 
     </div>
   );

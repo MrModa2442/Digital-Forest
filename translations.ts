@@ -89,6 +89,13 @@ export const translations = {
     total_focused: 'Total Time Focused',
     current_streak: 'Current Streak',
     achievements_title: 'My Achievements',
+    danger_zone_title: 'Danger Zone',
+    danger_zone_desc: 'Reset all your progress. This action is irreversible.',
+    delete_progress_button: 'Reset My Progress',
+    delete_confirm_title: 'Confirm Reset',
+    delete_confirm_message: 'This will permanently delete all your trees, coins, and achievements. Are you absolutely sure?',
+    cancel_button: 'Cancel',
+    delete_button: 'Yes, Reset',
     
     // Achievement Names & Descriptions
     ach_first_tree_name: 'First Root',

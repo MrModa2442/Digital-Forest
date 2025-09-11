@@ -181,6 +181,28 @@ const App: React.FC = () => {
       });
     }
   }, [coins, setCoins, setUnlockedTrees, userStats, unlockedAchievements, setUnlockedAchievements]);
+  
+  const handleDeleteProgress = useCallback(() => {
+    const keysToRemove = [
+        'plantedForest',
+        'coins',
+        'unlockedTrees',
+        'unlockedAchievements',
+        'totalFocusTime',
+        'currentStreak',
+        'lastSessionDate',
+    ];
+    
+    keysToRemove.forEach(key => {
+        try {
+            window.localStorage.removeItem(key);
+        } catch (error) {
+            console.error(`Failed to remove ${key} from localStorage`, error);
+        }
+    });
+
+    window.location.reload();
+  }, []);
 
   const renderContent = () => {
     switch (appState) {
@@ -197,7 +219,7 @@ const App: React.FC = () => {
       case AppState.FOREST:
         return <ForestScreen plantedForest={plantedForest} onBack={handleReset} />;
       case AppState.PROFILE:
-        return <ProfileScreen userStats={userStats} onBack={handleReset} unlockedAchievements={unlockedAchievements} />;
+        return <ProfileScreen userStats={userStats} onBack={handleReset} unlockedAchievements={unlockedAchievements} onDeleteProgress={handleDeleteProgress} />;
       case AppState.SETTINGS:
       default:
         return (
